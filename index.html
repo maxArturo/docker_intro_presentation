@@ -1,121 +1,187 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Intro to docker</title>
+    <title>Intro to docker</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>Docker</h1>
-                    <small>Or how I learned to love containers</small>
-                    <p>Max Alcala</p>
-                    <a href="https://twitter.com/maxarturoas">@maxarturoas</a>
-                    <br>
-                    <a href="mailto:malcala@shoppertrak.com">malcala@shoppertrak.com</a>
-				</section>
-				<section>
-                    <h1>Oh, Docker</h1>
-                    <p>What is it anyway?</p>
-                </section>
-                <section>
-                    <h1>Docker is:</h1>
-                    <ul>
-                        <li class="fragment">An abstraction mechanism for code</li>
-                        <li class="fragment">Self contained - runtime, system libraries, dependencies</li>
-                        <li class="fragment">Immutable - a snapshot of your software, all the way down to the OS</li>
-                        <li class="fragment">Highly portable - runs on any host that can run Docker</li>
-                    </ul>
-                </section>
-                <section>
-                    <img src="images/main_docker.png">
-                    <p>Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: code, runtime, system tools, system libraries – anything you can install on a server. This guarantees that it will always run the same, regardless of the environment it is running in.</p>
-                </section>
-                <section>
-                    <h1>Wait What</h1>
-                    <p>How is this even different from a vm</p>
-                </section>
-                <section>
-                    <img src="images/docker_vs_vm.png">
-                </section>
-                <section>
-                    <h1>Docker vs VM</h1>
-                    <ul>
-                        <li>A VM emulates the <b>entire</b> stack of a computer, from the low-level networking
-                            to filesystem operation</li>
-                        <li class="fragment">
-                            Docker shares the kernel with the host OS, while still maintaining isolation
-                            of the Docker-ized software
-                        </li>
-                        <li class="fragment">This gives it *much* better performance compared to a VM</li>
-                    </ul>
-                </section>
-                <section>
-                    <h1>what this means</h1>
-                    <ul>
-                        <li class="fragment">Developer onboarding is silly fast</li>
-                        <li class="fragment">Zero environment inconsistencies</li>
-                        <li class="fragment">Use the right tool for the job always</li>
-                        <li class="fragment">Deployment and rollback is standardized across *all*
-                        applications </li>
-                    </ul>
-                </section>
-                <section>
-                    <h1>I'm still not convinced</h1>
-                    <p>Give me more crazy things I can do with Docker</p>
-                </section>
-                <section>
-                    <h1>I'm still not convinced</h1>
-                    <p>Give me more crazy things I can do with Docker</p>
-                    <ul>
-                        <li class="fragment">Checkpoint and restore a Docker container at any point in time:
-                            <a href="https://circleci.com/blog/checkpoint-and-restore-docker-container-with-criu/">
-                                link
-                            </a> </li>
-                        <li class="fragment">stuff a 1GB Raspberry Pi with 1000+ Docker HTTP containers
-                            <a href="">link</a>
-                        </li>
-                        <li class="fragment">Have a Docker container package
-                            applications </li>
-                    </ul>
-                </section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Docker</h1>
+            <small>Or how I learned to love containers</small>
+            <p>Max Alcala</p>
+            <a href="https://twitter.com/maxarturoas">@maxarturoas</a>
+            <br>
+            <a href="mailto:malcala@shoppertrak.com">malcala@shoppertrak.com</a>
+        </section>
+        <section>
+            <h1>Oh, Docker</h1>
+            <p>What is it anyway?</p>
+        </section>
+        <section>
+            <h1>Docker is:</h1>
+            <ul>
+                <li class="fragment">An abstraction mechanism for code</li>
+                <li class="fragment">Self contained - runtime, system libraries, dependencies</li>
+                <li class="fragment">Immutable - a snapshot of your software, all the way down to the OS</li>
+                <li class="fragment">Highly portable - runs on any host that can run Docker</li>
+                <li class="fragment">Composable - start with a base and make it your own (or shamelessly take other's work)</li>
+            </ul>
+        </section>
+        <section>
+            <img src="images/main_docker.png">
+            <p>Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs
+                to run: code, runtime, system tools, system libraries – anything you can install on a server. This
+                guarantees that it will always run the same, regardless of the environment it is running in.</p>
+        </section>
+        <section>
+            <h1>Wait What</h1>
+            <p>How is this even different from a vm</p>
+        </section>
+        <section>
+            <img src="images/docker_vs_vm.png">
+        </section>
+        <section>
+            <h1>Docker vs VM</h1>
+            <ul>
+                <li>A VM emulates the <b>entire</b> stack of a computer, from the low-level networking
+                    to filesystem operation
+                </li>
+                <li class="fragment">
+                    Docker shares the kernel with the host OS, while still maintaining isolation
+                    of the Docker-ized software
+                </li>
+                <li class="fragment">This gives it *much* better performance compared to a VM</li>
+            </ul>
+        </section>
+        <section>
+            <h1>what this means</h1>
+            <ul>
+                <li class="fragment">Developer onboarding is silly fast</li>
+                <li class="fragment">Zero environment inconsistencies</li>
+                <li class="fragment">Use the right tool for the job always</li>
+                <li class="fragment">Deployment and rollback is standardized across *all*
+                    applications
+                </li>
+                <li class="fragment">Applications with very different requirements can coexist and share resources on
+                    the same host
+                </li>
+                <li class="fragment">Reduced cloud hosting costs</li>
+            </ul>
+        </section>
+        <section>
+            <p>None of this</p>
+            <img src="images/ops_problem_now.jpg">
+        </section>
+        <section>
+            <h1>Thats crazy</h1>
+            <p>Who is actually using this in production?</p>
+            <ul>
+                <li><a href="http://thenewstack.io/netflix-chills-open-source-adding-docker-support/">Netflix</a></li>
+                <li>
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0ahUKEwjjs-7sltLMAhUs6oMKHUauA3YQtwIIMjAD&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHt2RF5o9geA&usg=AFQjCNFXivCXGtNAdoMOFZWR-V4c0zWR-Q&sig2=kOfL3z7AWuzMJ5MiJz5teA">
+                        NYTimes
+                    </a></li>
+                <li><a href="https://www.docker.com/customers/ge-uses-docker-enable-self-service-their-developers">GE
+                </a></li>
+                <li>
+                    <a href="https://www.docker.com/customers/uber-accelerates-developer-onboarding-weeks-minutes-docker">Uber</a>
+                </li>
+                <li>Bunches others</li>
+            </ul>
+        </section>
+        <section>
+            <p>Let's see it in action!</p>
+            <h3>A short demo</h3>
+        </section>
+        <section>ok I'm sold, but
+            <h3>How does this work in production?</h3>
+        </section>
+        <section>
+            first,
+            <h2>Some Docker lingo</h2>
+            <ul>
+                <li>Docker <b>host</b>: the bare metal (where you have your apps running)</li>
+                <li>Docker <b>image</b>: The packaged bundle of your code/dependencies/os requirements</li>
+                <li>Docker <b>container</b>: the actual running instance of your image</li>
+            </ul>
+        </section>
+        <section>
+            <h3>A typical development/CI workflow</h3>
+            <img src="images/docker_ci.jpg">
+        </section>
+        <section>
+            <h3>Deploying in production - Service discovery</h3>
+            <img src="images/service_discovery.png">
+        </section>
+        <section>
+            just kidding,
+            <h1>I'm still not convinced</h1>
+            <p>Give me more crazy things I can do with Docker</p>
+        </section>
+        <section>
+            <h1>More crazy docker things</h1>
+            <ul>
+                <li class="fragment">Checkpoint and restore a Docker container at any point in time:
+                    <a href="https://circleci.com/blog/checkpoint-and-restore-docker-container-with-criu/">
+                        link
+                    </a></li>
+                <li class="fragment">stuff a 1GB Raspberry Pi with 1000+ Docker HTTP containers
+                    <a href="">link</a>(actual record is 2000+ containers)
+                </li>
+                <li class="fragment">Have a Docker container running Docker build Docker
+                    images for Docker hosting (because we can)
+                    <a href="https://bitbucket.org/shoppertrak/teamcity">link</a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <p>Any questions?</p>
+        </section>
+        <section>
+            <h1>Thank You</h1>
+        </section>
+    </div>
+</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            { src: 'plugin/markdown/marked.js' },
+            { src: 'plugin/markdown/markdown.js' },
+            { src: 'plugin/notes/notes.js', async: true },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
 </html>
