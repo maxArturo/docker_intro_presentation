@@ -40,9 +40,13 @@
             <h1>Docker is:</h1>
             <ul>
                 <li class="fragment">An abstraction mechanism for code</li>
+                <br>
                 <li class="fragment">Self contained - runtime, system libraries, dependencies</li>
+                <br>
                 <li class="fragment">Immutable - a snapshot of your software, all the way down to the OS</li>
+                <br>
                 <li class="fragment">Highly portable - runs on any host that can run Docker</li>
+                <br>
                 <li class="fragment">Composable - start with a base and make it your own (or shamelessly take other's work)</li>
             </ul>
         </section>
@@ -65,26 +69,43 @@
                 <li>A VM emulates the <b>entire</b> stack of a computer, from the low-level networking
                     to filesystem operation
                 </li>
+                <br>
                 <li class="fragment">
                     Docker shares the kernel with the host OS, while still maintaining isolation
                     of the Docker-ized software
                 </li>
+                <br>
+                <li class="fragment">This gives it *much* better performance compared to a VM</li>
+                <br>
                 <li class="fragment">This gives it *much* better performance compared to a VM</li>
             </ul>
         </section>
         <section>
-            <h1>what this means</h1>
+            <h1>what this means: Development </h1>
             <ul>
                 <li class="fragment">Developer onboarding is silly fast</li>
+                <br>
                 <li class="fragment">Zero environment inconsistencies</li>
-                <li class="fragment">Use the right tool for the job always</li>
+                <br>
+                <li class="fragment">Use the right tool for the job always - Don't worry about dependencies/library conflicts</li>
+            </ul>
+        </section>
+        <section>
+            <h1>what this means: Ops/Prod Support</h1>
+            <ul>
                 <li class="fragment">Deployment and rollback is standardized across *all*
                     applications
                 </li>
+                <br>
+                <li class="fragment">
+                    Removes complexity from Continuous Integration
+                </li>
+                <br>
                 <li class="fragment">Applications with very different requirements can coexist and share resources on
                     the same host
                 </li>
-                <li class="fragment">Reduced cloud hosting costs</li>
+                <br>
+                <li class="fragment">Corollary: Reduced cloud hosting costs ($$)</li>
             </ul>
         </section>
         <section>
@@ -131,6 +152,31 @@
         <section>
             <h3>Deploying in production - Service discovery</h3>
             <img src="images/service_discovery.png">
+        </section>
+        <section>
+            <h3>Deployment tools</h3>
+            <ul>
+                <li><b>Distributed systems</b> (Apache Mesos, Kubernetes, Docker Swarm)
+                    <br>
+                    <ul>
+                        <li>
+                            Abstracts containers and lets you deploy against a <i>pool</i> of resources
+                        </li>
+                        <li>More upfront setup, but auto scales/configures/checks health of your containers</li>
+                    </ul>
+
+                </li>
+                <br>
+                <li><b>Traditional deployment</b> (Chef, Puppet, Jenkins, TeamCity...)
+                    <ul>
+                        <li>
+                            Grabs docker images and runs them on your machines, no frills
+                        </li>
+                        <li>Less complicated, but you're on the hook for keeping track of your
+                            container allocation/health</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
         <section>
             just kidding,
