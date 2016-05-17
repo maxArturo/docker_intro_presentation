@@ -77,8 +77,25 @@
                 <br>
                 <li class="fragment">This gives it *much* better performance compared to a VM</li>
                 <br>
-                <li class="fragment">This gives it *much* better performance compared to a VM</li>
             </ul>
+        </section>
+        <section>
+            <p>But wait, there's more!</p>
+        </section>
+        <section>
+            <h3>Docker as version control</h3>
+            <li class="fragment">
+                Internally, Docker is made up of a bunch of layers. Each layer represents a <code>diff</code> of filesystem changes from one layer to the next.
+            </li>
+            <br>
+            <li class="fragment">
+                You can specify a layer and build off of it, similar to forking off of a project. This promotes code reuse both within and outside the team
+            </li>
+            <br>
+            <li class="fragment">
+                This also means smaller images and faster startup times, as we don't have to recreate all the steps it took to get to our "base" Docker image
+            </li>
+            <br>
         </section>
         <section>
             <h1>what this means: Development </h1>
@@ -91,10 +108,10 @@
             </ul>
         </section>
         <section>
-            <h1>what this means: Ops/Prod Support</h1>
+            <h3>what this means: Ops/Prod Support</h3>
             <ul>
                 <li class="fragment">Deployment and rollback is standardized across *all*
-                    applications
+                    applications - deploy latest image for release, deploy a previous image for rollback
                 </li>
                 <br>
                 <li class="fragment">
